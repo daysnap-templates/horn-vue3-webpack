@@ -1,5 +1,5 @@
 <template>
-  <hor-view>
+  <hor-view title="1">
     <p>1</p>
   </hor-view>
 </template>
