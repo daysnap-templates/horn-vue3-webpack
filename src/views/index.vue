@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { HorView } from '@daysnap/horn-ui'
 defineOptions({
-  name: 'Home'
+  name: 'Home1'
 })
 </script>
 
