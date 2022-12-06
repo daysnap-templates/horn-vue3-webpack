@@ -5,6 +5,12 @@ const { VantResolver } = require('unplugin-vue-components/resolvers')
 const Components = require('unplugin-vue-components/webpack')
 
 module.exports = defineConfig({
+  publicPath: './',
+
+  // fix defineOptions is not defined
+  // https://github.com/sxzz/unplugin-vue-macros/issues/23
+  parallel: false,
+
   transpileDependencies: [
     /[/\\]node_modules[/\\][@\\]daysnap[/\\]/
   ],
@@ -16,12 +22,14 @@ module.exports = defineConfig({
         include: [/\.vue$/, /\.vue\?vue/]
       }),
 
+      // https://github.com/antfu/unplugin-auto-import
       AutoImport({
         imports: ['vue', 'vue-router'],
         dts: 'typings/auto-imports.d.ts',
         resolvers: [VantResolver()]
       }),
 
+      // https://github.com/antfu/unplugin-vue-components
       Components({
         dts: 'typings/components.d.ts',
         extensions: ['ts', 'jsx', 'tsx', 'js', 'vue'],
@@ -31,7 +39,13 @@ module.exports = defineConfig({
           (componentName) => {
             if (componentName.startsWith('Hor')) { return { name: componentName, from: '@daysnap/horn-ui' } }
           }
-        ]
+        ],
+        include: [
+          /\.vue$/,
+          /\.vue\?vue/,
+          /[/\\]node_modules[/\\][@\\]daysnap[/\\]/
+        ],
+        exclude: []
       })
     ]
   }
