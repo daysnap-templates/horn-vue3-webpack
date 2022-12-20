@@ -7,7 +7,7 @@ const Components = require('unplugin-vue-components/webpack')
 module.exports = defineConfig({
   publicPath: './',
   devServer: {
-    port: 3000,
+    port: 8080,
     allowedHosts: 'all'
   },
 
