@@ -10,11 +10,11 @@
     "prepare": "husky install && echo 'export PATH=\"/usr/local/bin/:$PATH\"' >> ~/.huskyrc"
   },
   "dependencies": {
-    "@daysnap/banana": "0.0.3",
+    "@daysnap/banana": "0.0.5",
     "@daysnap/define-sass": "0.0.9",
-    "@daysnap/horn-jssdk": "0.0.3",
-    "@daysnap/horn-ui": "0.0.3",
-    "@daysnap/horn-use": "0.0.3",
+    "@daysnap/horn-jssdk": "0.0.4",
+    "@daysnap/horn-ui": "0.0.4",
+    "@daysnap/horn-use": "0.0.4",
     "@daysnap/utils": "0.0.29",
     "amfe-flexible": "^2.2.1",
     "core-js": "^3.8.3",

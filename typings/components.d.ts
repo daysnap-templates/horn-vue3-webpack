@@ -11,7 +11,6 @@ declare module '@vue/runtime-core' {
     HorView: typeof import('@daysnap/horn-ui')['HorView']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TextCom: typeof import('./../src/components/TextCom.vue')['default']
     VanActionSheet: typeof import('vant/es')['ActionSheet']
     VanButton: typeof import('vant/es')['Button']
     VanCheckbox: typeof import('vant/es')['Checkbox']

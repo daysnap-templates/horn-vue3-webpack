@@ -6,6 +6,10 @@ const Components = require('unplugin-vue-components/webpack')
 
 module.exports = defineConfig({
   publicPath: './',
+  devServer: {
+    port: 3000,
+    allowedHosts: 'all'
+  },
 
   // fix defineOptions is not defined
   // https://github.com/sxzz/unplugin-vue-macros/issues/23
