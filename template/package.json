@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@daysnap/banana": "^0.0.9",
+    "@daysnap/define-sass": "^0.0.9",
+    "@daysnap/horn-ui": "^0.0.6",
     "@daysnap/horn-use": "^0.0.6",
     "@daysnap/utils": "^0.0.41",
     "amfe-flexible": "^2.2.1",

@@ -1,5 +1,7 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <hor-view>
+    <p>我是设置页面</p>
+  </hor-view>
 </template>
+
+<script lang="ts" setup></script>

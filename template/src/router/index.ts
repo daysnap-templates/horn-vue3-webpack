@@ -4,19 +4,20 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'main',
+    redirect: '/home',
     component: () => import('src/views/main/index.vue'),
     children: [
       {
-        path: '',
+        path: '/home',
         name: 'home',
         component: () => import('src/views/home/index.vue'),
-        meta: { title: '首页' },
+        meta: { title: '首页', icon: 'wap-home-o', iconSelected: 'wap-home' },
       },
       {
         path: '/mine',
         name: 'mine',
         component: () => import('src/views/mine/index.vue'),
-        meta: { title: '我的' },
+        meta: { title: '我的', icon: 'manager-o', iconSelected: 'manager' },
       },
     ],
   },
