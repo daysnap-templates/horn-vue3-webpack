@@ -24,3 +24,7 @@ pnpm-debug.log*
 
 # lock
 package-lock.json
+
+# auto
+auto-imports.d.ts
+components.d.ts
