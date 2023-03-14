@@ -32,7 +32,7 @@ module.exports = {
 # ${chalk.green('项目初始化成功!')}
 # 可以执行:
   ${chalk.yellow(
-      `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}npm install\n  npm run dev`
+      `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}npm install\n  npm run serve`
     )}
 相关文档可以查看： https://github.com/daysnap-templates/vue3-horn-webpack
 `
