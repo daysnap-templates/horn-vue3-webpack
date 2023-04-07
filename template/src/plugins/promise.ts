@@ -2,7 +2,9 @@ import { excludeMessage } from '@/utils'
 import { formatMessage, isFunction } from '@daysnap/utils'
 import { showToast } from 'vant'
 
-type ToastCallback = ((err: unknown, message: string) => boolean | void) | boolean
+type ToastCallback =
+  | ((err: unknown, message: string) => boolean | void)
+  | boolean
 
 declare global {
   interface Promise<T> {

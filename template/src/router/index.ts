@@ -1,14 +1,21 @@
-import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import {
+  createRouter,
+  createWebHashHistory,
+  type RouteRecordRaw,
+} from 'vue-router'
 import { setupGuards } from './guards'
 
 const routes = ((s) =>
-  Object.values(s).reduce<RouteRecordRaw[]>(
-    (res, item: any) => [...res, ...(item.default || [])],
-    [],
-  ))(import.meta.glob('./modules/*.ts', { eager: true }))
+  s
+    .keys()
+    .reduce<RouteRecordRaw[]>(
+      (res, k) => [...res, ...(s(k).default || [])],
+      [],
+    ))(require.context('./modules', true, /\.(t)s$/))
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes,
 })
 

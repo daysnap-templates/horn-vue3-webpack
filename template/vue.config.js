@@ -4,6 +4,7 @@ const DefineOptions = require('unplugin-vue-define-options/webpack')
 const AutoImport = require('unplugin-auto-import/webpack')
 const { VantResolver } = require('unplugin-vue-components/resolvers')
 const Components = require('unplugin-vue-components/webpack')
+const { kebabCase } = require('@daysnap/utils')
 
 const resolve = (...dirs) => path.resolve(__dirname, ...dirs)
 
@@ -55,7 +56,13 @@ module.exports = defineConfig({
           VantResolver(),
           (componentName) => {
             if (componentName.startsWith('Hor')) {
-              return { name: componentName, from: '@daysnap/horn-ui' }
+              return {
+                name: componentName,
+                from: '@daysnap/horn-ui',
+                sideEffects: `@daysnap/horn-ui/src/${kebabCase(
+                  componentName,
+                )}/style/index`,
+              }
             }
           },
         ],

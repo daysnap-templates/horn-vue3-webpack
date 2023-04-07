@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
 
 const app = createApp(App)
 
@@ -8,4 +7,4 @@ const app = createApp(App)
   require.context('./plugins', true, /\.(t)s$/),
 )
 
-app.use(router).mount('#app')
+app.mount('#app')

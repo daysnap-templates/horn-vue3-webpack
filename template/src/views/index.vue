@@ -29,7 +29,9 @@ const computedTabbars = computed(() => {
   const tabbarRoute = routes.find((item) => item.path === '/')
   return tabbarRoute?.children ?? []
 })
-const current = ref(computedTabbars.value.findIndex((item) => item.path === route.path))
+const current = ref(
+  computedTabbars.value.findIndex((item) => item.path === route.path),
+)
 </script>
 
 <style lang="scss" scoped>
