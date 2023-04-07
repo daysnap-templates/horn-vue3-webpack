@@ -1,1 +1,1 @@
-export * from './filterMessage'
+export * from './exclude-message'

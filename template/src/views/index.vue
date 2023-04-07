@@ -1,13 +1,14 @@
 <template>
-  <div class="view-wrap">
+  <div class="c-view-wrap main-view">
     <router-view v-slot="{ Component }">
       <keep-alive>
         <component :is="Component" />
       </keep-alive>
     </router-view>
-    <van-tabbar fixed route placeholder v-model="current" class="main-tab-bar">
+
+    <van-tabbar fixed route placeholder v-model="current">
       <van-tabbar-item
-        v-for="(item, index) in computedTabBars"
+        v-for="(item, index) in computedTabbars"
         :key="item.path"
         replace
         :to="{ path: item.path, query: $route.query }"
@@ -22,31 +23,27 @@
 <script lang="ts" setup>
 const router = useRouter()
 const route = useRoute()
-const computedTabBars = computed(() => {
-  const { options } = router
-  const { routes } = options
-  const tabBarRoutes = routes.find((item) => item.path === '/')
-  const { children = [], path = '' } = tabBarRoutes || {}
-  return (
-    children
-      ?.filter((item) => !item?.path?.includes('components'))
-      .map((item) => {
-        const { path: itemPath } = item
-        return Object.assign({}, item, {
-          path: itemPath.startsWith('/')
-            ? itemPath
-            : `${path}${path.endsWith('/') ? '' : '/'}${itemPath}`,
-        })
-      }) ?? []
-  )
+
+const computedTabbars = computed(() => {
+  const routes = router.getRoutes()
+  const tabbarRoute = routes.find((item) => item.path === '/')
+  return tabbarRoute?.children ?? []
 })
-const current = ref(
-  computedTabBars.value.findIndex((item) => item.path === route.path),
-)
+const current = ref(computedTabbars.value.findIndex((item) => item.path === route.path))
 </script>
 
-<style lang="scss">
-.view-wrap {
-  background-color: #f2f2f2;
+<style lang="scss" scoped>
+@import '@/assets/scss/define.scss';
+.main-view {
+  @extend %df;
+  @extend %fdc;
+  height: 100vh;
+
+  > .c-view-wrap {
+    @extend %df1;
+    min-height: auto;
+    height: 500px;
+    background-color: red;
+  }
 }
 </style>

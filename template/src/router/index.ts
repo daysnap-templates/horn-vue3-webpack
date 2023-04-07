@@ -1,41 +1,18 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { setupGuards } from './guards'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'main',
-    redirect: '/home',
-    component: () => import('@/views/index.vue'),
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        component: () => import('src/views/home/index.vue'),
-        meta: { title: '首页', icon: 'wap-home-o', iconSelected: 'wap-home' },
-      },
-      {
-        path: '/mine',
-        name: 'mine',
-        component: () => import('src/views/mine/index.vue'),
-        meta: { title: '我的', icon: 'manager-o', iconSelected: 'manager' },
-      },
-    ],
-  },
-  {
-    path: '/setting',
-    name: 'setting',
-    component: () => import('src/views/setting/index.vue'),
-    meta: { title: '设置' },
-  },
-]
+const routes = ((s) =>
+  Object.values(s).reduce<RouteRecordRaw[]>(
+    (res, item: any) => [...res, ...(item.default || [])],
+    [],
+  ))(import.meta.glob('./modules/*.ts', { eager: true }))
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 })
 
-router.afterEach((to) => {
-  window.document.title = (to.meta?.title ?? 'Horn') as string
-})
+// 设置路由守卫
+setupGuards(router)
 
 export default router

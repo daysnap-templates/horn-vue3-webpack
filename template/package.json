@@ -9,16 +9,17 @@
   },
   "dependencies": {
     "@daysnap/banana": "^0.0.9",
-    "@daysnap/define-sass": "^0.0.9",
-    "@daysnap/horn-jssdk": "^0.0.6",
-    "@daysnap/horn-ui": "^0.0.6",
-    "@daysnap/horn-use": "^0.0.6",
-    "@daysnap/utils": "^0.0.41",
-    "amfe-flexible": "^2.2.1",
     "core-js": "^3.8.3",
-    "vant": "^4.1.0",
-    "vue": "^3.2.13",
-    "vue-router": "^4.0.3"
+    "@daysnap/define-sass": "^0.0.15",
+    "@daysnap/horn-jssdk": "^0.0.11",
+    "@daysnap/horn-ui": "^0.0.18",
+    "@daysnap/horn-use": "^0.0.14",
+    "@daysnap/utils": "^0.0.48",
+    "amfe-flexible": "^2.2.1",
+    "pinia": "^2.0.32",
+    "vant": "^4.1.2",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",

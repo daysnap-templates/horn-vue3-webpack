@@ -1,19 +1,19 @@
-import { Plugin, AppConfig } from 'vue'
-import { showToast, closeToast } from 'vant'
-import { filterMessage } from '@/utils'
-import { isEmpty } from '@daysnap/utils'
+import { excludeMessage } from '@/utils'
+import { formatMessage } from '@daysnap/utils'
+import { closeToast, showToast } from 'vant'
+import type { Plugin, AppConfig } from 'vue'
 
-// 全局错误处理
+// global error handler
 const errorHandler: AppConfig['errorHandler'] = (err) => {
-  // 清理弱提示
+  // close vant toast
   closeToast()
-  if (isEmpty(err)) {
-    return
-  }
-  const message = filterMessage(err)
-  if (!['', 'cancel'].includes(message)) {
+
+  const message = formatMessage(err)
+  if (message && !excludeMessage(message)) {
     showToast(message)
   }
+
+  // development env 需要抛出异常 方便查看问题
   if (process.env.NODE_ENV === 'development') {
     throw err
   }

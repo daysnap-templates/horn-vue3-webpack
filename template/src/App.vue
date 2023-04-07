@@ -16,17 +16,5 @@ const transitionName = useTransitionNameByPosition({
 </script>
 
 <style lang="scss">
-@import 'src/assets/scss/common.scss';
-html,
-body {
-  height: 100%;
-}
-#app {
-  font-size: 12px;
-}
-.view-wrap {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-}
+@import '@/assets/scss/global.scss';
 </style>
